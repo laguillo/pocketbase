@@ -2,7 +2,7 @@
 
 Open Source backend for your next SaaS and Mobile app in 1 file.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/73ofk1?referralCode=HKQvZr)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/73ofk1?referralCode=HKQvZr&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 <p align="center">
     <a href="https://pocketbase.io" target="_blank" rel="noopener">
