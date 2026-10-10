@@ -3,7 +3,7 @@
 # ---- fetch stage -------------------------------------------------
 FROM alpine:3.22 AS fetch
 
-ARG PB_VERSION=0.40.4
+ARG PB_VERSION=0.40.5
 ARG TARGETARCH=amd64
 
 RUN apk add --no-cache unzip ca-certificates
@@ -29,9 +29,10 @@ RUN mkdir -p /pb/pb_data /pb/pb_public /pb/pb_hooks /pb/pb_migrations
 EXPOSE 8080
 
 # Shell form so ${PORT} expands. Railway injects PORT; 8080 is the local default.
+# exec replaces the shell so PocketBase is PID 1 and receives SIGTERM directly.
 # --dir is explicit so the data directory never depends on the binary's location.
 # --encryptionEnv is added only when PB_ENCRYPTION_KEY is set, so it stays opt-in.
-CMD ["sh", "-c", "/pb/pocketbase serve \
+CMD ["sh", "-c", "exec /pb/pocketbase serve \
   --http=0.0.0.0:${PORT:-8080} \
   --dir=/pb/pb_data \
   --publicDir=/pb/pb_public \
