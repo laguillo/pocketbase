@@ -50,7 +50,7 @@ SMTP, OAuth providers, backup schedules, and S3 storage are configured in the ad
 
 SMTP passwords and OAuth client secrets are stored in plain text unless `PB_ENCRYPTION_KEY` is set. You can enable it after the first deploy; settings are encrypted the next time they are saved. **Keep the key safe: if it is lost or removed after settings were encrypted, PocketBase will not start.** When the key is set, add `--encryptionEnv=PB_ENCRYPTION_KEY` to any CLI command you run in the shell.
 
-The health check path is `/api/health` (set in `railway.toml`). Railway waits for it to pass before switching traffic to a new deployment. Because a volume can only be mounted once, redeploys have a brief downtime.
+The health check path is `/api/health` (configured in the service settings). Railway waits for it to pass before switching traffic to a new deployment. Because a volume can only be mounted once, redeploys have a brief downtime.
 
 **Where your data lives**
 
