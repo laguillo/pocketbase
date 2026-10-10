@@ -18,7 +18,7 @@ RUN unzip /tmp/pb.zip -d /pb/ \
 FROM alpine:3.22
 
 # ca-certificates: outbound TLS for S3 backups, SMTP and OAuth providers
-# tzdata: lets TZ control the backup cron schedule
+# tzdata: lets TZ set local time for JS hooks (the backup cron always runs in UTC)
 RUN apk add --no-cache ca-certificates tzdata
 
 COPY --from=fetch /pb/pocketbase /pb/pocketbase
