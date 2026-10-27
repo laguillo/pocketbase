@@ -3,12 +3,15 @@
 # ---- fetch stage -------------------------------------------------
 FROM alpine:3.22 AS fetch
 
-ARG PB_VERSION=0.40.5
+ARG PB_VERSION=0.41.0
 ARG TARGETARCH=amd64
 
 RUN apk add --no-cache unzip ca-certificates
 
-ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_${TARGETARCH}.zip /tmp/pb.zip
+# Releases moved from GitHub to ganigeorgiev.com in v0.41.0. This is the stable
+# download URL from the release notes; it 307-redirects to the actual file.
+# GitHub only hosts releases up to v0.40.6.
+ADD https://ganigeorgiev.com/meta/pocketbase/pocketbase/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_${TARGETARCH}.zip /tmp/pb.zip
 
 RUN unzip /tmp/pb.zip -d /pb/ \
     && rm /tmp/pb.zip \

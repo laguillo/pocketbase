@@ -43,7 +43,7 @@ Every variable is optional; the template runs with none of them set.
 | Variable | Default | Description |
 |---|---|---|
 | `PORT` | `8080` | Port PocketBase listens on. Railway sets it automatically. |
-| `PB_VERSION` | `0.40.5` | Build argument. Add it as a service variable to build a different PocketBase release without editing the Dockerfile. |
+| `PB_VERSION` | `0.41.0` | Build argument. Add it as a service variable to build a different PocketBase release without editing the Dockerfile. |
 | `PB_ENCRYPTION_KEY` | unset | Exactly 32 characters. When present, PocketBase encrypts stored settings at rest. |
 
 SMTP, OAuth providers, backup schedules, and S3 storage are configured in the admin dashboard, not through environment variables.
@@ -89,11 +89,13 @@ pb.collection('posts').subscribe('*', (e) => {
 });
 ```
 
-Official SDKs: [JavaScript/TypeScript](https://github.com/pocketbase/js-sdk) and [Dart/Flutter](https://github.com/pocketbase/dart-sdk). Realtime subscriptions in Node.js need an `EventSource` polyfill.
+Official SDKs: [JavaScript/TypeScript](https://ganigeorgiev.com/pocketbase/js-sdk) and [Dart/Flutter](https://ganigeorgiev.com/pocketbase/dart-sdk). Realtime subscriptions in Node.js need an `EventSource` polyfill.
 
 **Upgrading**
 
-PocketBase is pre-`v1.0.0` and ships releases often, so full backward compatibility is not guaranteed and this template pins a version instead of tracking latest. To upgrade: read the [changelog](https://github.com/pocketbase/pocketbase/releases), take a backup, set `PB_VERSION` to the new release number without the leading `v`, and redeploy. Rolling back is the same operation in reverse, plus restoring the backup if the newer version already migrated your database.
+PocketBase is pre-`v1.0.0` and ships releases often, so full backward compatibility is not guaranteed and this template pins a version instead of tracking latest. To upgrade: read the [changelog](https://ganigeorgiev.com/pocketbase/pocketbase/releases), take a backup, set `PB_VERSION` to the new release number without the leading `v`, and redeploy. Rolling back is the same operation in reverse, plus restoring the backup if the newer version already migrated your database.
+
+PocketBase moved from GitHub to `ganigeorgiev.com` in v0.41.0 and the Dockerfile downloads from the new host, which only has v0.41.0 and later. To roll back to v0.40.6 or earlier, point the Dockerfile `ADD` at the matching [GitHub release](https://github.com/pocketbase/pocketbase/releases) URL instead.
 
 **Troubleshooting**
 
