@@ -43,7 +43,7 @@ Every variable is optional; the template runs with none of them set.
 | Variable | Default | Description |
 |---|---|---|
 | `PORT` | `8080` | Port PocketBase listens on. Railway sets it automatically. |
-| `PB_VERSION` | `0.41.0` | Build argument. Add it as a service variable to build a different PocketBase release without editing the Dockerfile. |
+| `PB_VERSION` | `0.41.1` | Build argument. Add it as a service variable to build a different PocketBase release without editing the Dockerfile. |
 | `PB_ENCRYPTION_KEY` | unset | Exactly 32 characters. When present, PocketBase encrypts stored settings at rest. |
 
 SMTP, OAuth providers, backup schedules, and S3 storage are configured in the admin dashboard, not through environment variables.

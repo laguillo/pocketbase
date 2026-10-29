@@ -3,7 +3,7 @@
 # ---- fetch stage -------------------------------------------------
 FROM alpine:3.22 AS fetch
 
-ARG PB_VERSION=0.41.0
+ARG PB_VERSION=0.41.1
 ARG TARGETARCH=amd64
 
 RUN apk add --no-cache unzip ca-certificates
